@@ -3,8 +3,8 @@ const Navbar = () => {
     return(
         <div className='nav'>
             <ul className="nav-menu">
-                <li>Home</li>
-                <li>Simulator</li>
+                <li></li>
+                <li></li>
             </ul>
         </div>
     )

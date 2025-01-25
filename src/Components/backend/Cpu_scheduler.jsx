@@ -460,9 +460,14 @@ const CpuScheduler = () => {
     };
 
     return (
-        <div>
-            <h1 style={{ textAlign: 'center' }}>CPU SCHEDULING SIMULATOR</h1>
-            <table className="table table-bordered table-condensed" id="inputTable" style={{ margin: 'auto' }}>
+        <div style={{ backgroundColor: "#f7f7f7", minHeight: "100vh", padding: "20px" }}>
+            <h1 style={{ textAlign: "center" }}>CPU SCHEDULING SIMULATOR</h1>
+            
+            <table 
+                className="table table-bordered table-condensed" 
+                id="inputTable" 
+                style={{ margin: "auto", backgroundColor: "#ffffff" }}
+            >
                 <thead>
                     <tr>
                         <th>Process:</th>
@@ -475,9 +480,10 @@ const CpuScheduler = () => {
                     {input_table()}
                 </tbody>
             </table>
-            <div className="well" >
+            
+            <div className="well" style={{ backgroundColor: "#e9ecef", padding: "20px", borderRadius: "8px", margin: "20px auto" }}>
                 <div className="row">
-                    <div className="col-md-4" style={{ textAlign: 'center' }}>
+                    <div className="col-md-4" style={{ textAlign: "center" }}>
                         <label>Algorithm:</label>
                         <select id="algorithm_dropdown" value={algo} onChange={change_alg}>
                             <option value="FCFS">First Come First Served</option>
@@ -487,7 +493,7 @@ const CpuScheduler = () => {
                         </select>
                         <p style={{ marginTop: "15px" }} id="algorithm_explanation"></p>
                     </div>
-                    <div className="col-md-4" style={{ textAlign: 'center' }}>
+                    <div className="col-md-4" style={{ textAlign: "center" }}>
                         <label>Number of process:</label>
                         <div className="input-group">
                             <span className="input-group-btn">
@@ -500,7 +506,7 @@ const CpuScheduler = () => {
                         </div>
 
                         <label style={{ marginTop: "20px" }}>Context Switch Time:</label>
-                        <div className="input-group" style={{ textAlign: 'center' }}>
+                        <div className="input-group" style={{ textAlign: "center" }}>
                             <span className="input-group-btn">
                                 <button type="button" onClick={() => update_switchtime(switchTime - 0.1)}>-</button>
                             </span>
@@ -512,37 +518,54 @@ const CpuScheduler = () => {
                     </div>
                 </div>
             </div>
+            
             <div style={{ display: "block", textAlign: "center" }}>
                 <p>Click on the run button to show the Output Table</p>
                 <button id="runBtn" onClick={run_button}>Run</button>
             </div>
-            <div style={{ display: "block", textAlign: "center" }}>
+            
+            <div style={{ display: "block", textAlign: "center", marginTop: "20px" }}>
                 <p>Click on the Reset button to run another program</p>
                 <button id="resetBtn" onClick={reset_button}>Reset</button>
             </div>
+            
             <hr />
-            <h1 style={{ textAlign: 'center' }}>Output Table</h1>
+            <h1 style={{ textAlign: "center" }}>Output Table</h1>
             <hr />
-            <table className="table table-bordered table-condensed" id="outputTable" style={{ marginBottom: '50px' }}>
+            
+            <table 
+                className="table table-bordered table-condensed" 
+                id="outputTable" 
+                style={{ marginBottom: "50px", backgroundColor: "#ffffff" }}
+            >
                 <thead>
                     <tr>
-                        <th style={{ backgroundColor: '#9adcff' }}>Process:</th>
-                        <th style={{ backgroundColor: '#9ADCFF' }}>Arrival Time:</th>
-                        <th style={{ backgroundColor: '#9ADCFF' }}>Burst Time:</th>
-                        <th style={{ backgroundColor: '#9ADCFF' }}>Completion Time: </th>
-                        <th style={{ backgroundColor: '#9ADCFF' }}>Turn around Time: </th>
-                        <th style={{ backgroundColor: '#9ADCFF' }}>Waiting Time: </th>
+                        <th style={{ backgroundColor: "#9adcff" }}>Process:</th>
+                        <th style={{ backgroundColor: "#9ADCFF" }}>Arrival Time:</th>
+                        <th style={{ backgroundColor: "#9ADCFF" }}>Burst Time:</th>
+                        <th style={{ backgroundColor: "#9ADCFF" }}>Completion Time: </th>
+                        <th style={{ backgroundColor: "#9ADCFF" }}>Turn around Time: </th>
+                        <th style={{ backgroundColor: "#9ADCFF" }}>Waiting Time: </th>
                     </tr>
                 </thead>
                 <tbody>
                     {output_table()}
                 </tbody>
             </table>
+            
             <div>
-                <h1 style={{ textAlign: 'center' }}>Gantt Chart</h1>
-                <div style={{ display: 'flex', alignItems: 'center' }}>
+                <h1 style={{ textAlign: "center" }}>Gantt Chart</h1>
+                <div style={{ display: "flex", alignItems: "center" }}>
                     {chart.map((item, index) => (
-                        <div key={index} style={{ border: '1px solid black', flex: `${item.endTime - item.startTime}`, textAlign: 'center' }}>
+                        <div 
+                            key={index} 
+                            style={{ 
+                                border: "1px solid black", 
+                                flex: `${item.endTime - item.startTime}`, 
+                                textAlign: "center", 
+                                backgroundColor: "#f8d7da" 
+                            }}
+                        >
                             {`P${item.pid}`}
                             <br />
                             {`${item.startTime} - ${item.endTime}`}
